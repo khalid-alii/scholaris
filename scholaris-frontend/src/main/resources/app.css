@@ -1,0 +1,193 @@
+.root, .screen {
+    -fx-background-color: #f5f3ee;
+}
+
+/* ---- Floating pill nav bar ---- */
+.nav-pill {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 40;
+    -fx-effect: dropshadow(gaussian, rgba(20,20,20,0.10), 22, 0, 0, 6);
+}
+
+.logo-icon {
+    -fx-background-color: #d7f24a;
+    -fx-background-radius: 100;
+    -fx-min-width: 30;
+    -fx-min-height: 30;
+    -fx-max-width: 30;
+    -fx-max-height: 30;
+    -fx-alignment: center;
+    -fx-font-size: 14px;
+}
+
+.logo-text {
+    -fx-text-fill: #141414;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+}
+
+.nav-link {
+    -fx-text-fill: #6b6b6b;
+    -fx-font-size: 13px;
+    -fx-border-color: transparent;
+}
+.nav-link:hover {
+    -fx-text-fill: #141414;
+}
+
+/* ---- Hero / landing ---- */
+.pill-tag {
+    -fx-background-color: #f0f7cf;
+    -fx-text-fill: #5c7a12;
+    -fx-padding: 6 16 6 16;
+    -fx-background-radius: 20;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.hero-heading {
+    -fx-text-fill: #141414;
+    -fx-font-size: 44px;
+    -fx-font-weight: bold;
+}
+
+.hero-heading-small {
+    -fx-text-fill: #141414;
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+}
+
+.hero-subheading {
+    -fx-text-fill: #9a9a9a;
+    -fx-font-size: 44px;
+    -fx-font-weight: bold;
+}
+
+.hero-desc {
+    -fx-text-fill: #78716c;
+    -fx-font-size: 14px;
+}
+
+/* ---- Buttons ---- */
+.primary-button {
+    -fx-background-color: #d7f24a;
+    -fx-text-fill: #141414;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 14 30 14 30;
+    -fx-background-radius: 30;
+    -fx-cursor: hand;
+}
+.primary-button:hover {
+    -fx-background-color: #c7e63a;
+}
+
+.secondary-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #d7d2c2;
+    -fx-border-radius: 20;
+    -fx-text-fill: #141414;
+    -fx-font-weight: bold;
+    -fx-padding: 9 20 9 20;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+}
+.secondary-button:hover {
+    -fx-background-color: #f0f7cf;
+    -fx-border-color: #d7f24a;
+}
+
+.page-nav-button {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e7e2d3;
+    -fx-border-radius: 20;
+    -fx-text-fill: #141414;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20 10 20;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+}
+.page-nav-button:hover {
+    -fx-background-color: #f0f7cf;
+    -fx-border-color: #d7f24a;
+}
+.page-nav-button:disabled {
+    -fx-opacity: 0.35;
+    -fx-cursor: default;
+}
+
+.nav-page-btn {
+    -fx-background-color: #f5f3ee;
+    -fx-text-fill: #141414;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-min-width: 32;
+    -fx-min-height: 32;
+    -fx-max-width: 32;
+    -fx-max-height: 32;
+    -fx-background-radius: 100;
+    -fx-cursor: hand;
+}
+.nav-page-btn:hover {
+    -fx-background-color: #d7f24a;
+}
+
+/* ---- Cards ---- */
+.form-card, .scholarship-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 20;
+    -fx-border-color: #ece5d8;
+    -fx-border-radius: 20;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(28,25,23,0.07), 16, 0, 0, 5);
+}
+
+.card-title {
+    -fx-text-fill: #141414;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.card-subtitle, .card-desc {
+    -fx-text-fill: #78716c;
+    -fx-font-size: 13px;
+}
+
+.section-title {
+    -fx-text-fill: #141414;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.section-title-small {
+    -fx-text-fill: #141414;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.field-label {
+    -fx-text-fill: #57534e;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-background-color: #f5f3ee;
+    -fx-border-color: #e7e0d2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-text-fill: #141414;
+    -fx-padding: 10;
+}
+.text-field:focused {
+    -fx-border-color: #d7f24a;
+}
+
+.tag {
+    -fx-background-color: #f0f7cf;
+    -fx-text-fill: #5c7a12;
+    -fx-padding: 4 10 4 10;
+    -fx-background-radius: 12;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
