@@ -41,7 +41,7 @@ public class ScholarshipDetailScreen extends VBox {
         getChildren().add(nav);
 
         VBox outer = new VBox(16);
-        outer.setMaxWidth(760);
+        outer.setMaxWidth(650);
         outer.setPadding(new Insets(40, 20, 60, 20));
         outer.setAlignment(Pos.TOP_LEFT);
 

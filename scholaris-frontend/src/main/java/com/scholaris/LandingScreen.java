@@ -23,8 +23,6 @@ public class LandingScreen extends VBox {
         hero.setPadding(new Insets(110, 60, 60, 60));
         hero.setMaxWidth(700);
 
-        Label tag = new Label("\u2726 Next-Gen Scholar Matching");
-        tag.getStyleClass().add("pill-tag");
 
         Label heading = new Label("Unlock your future.");
         heading.getStyleClass().add("hero-heading");
@@ -44,7 +42,7 @@ public class LandingScreen extends VBox {
         cta.getStyleClass().add("primary-button");
         cta.setOnAction(e -> Main.switchScreen(new ProfileScreen()));
 
-        hero.getChildren().addAll(tag, heading, sub, desc, cta);
+        hero.getChildren().addAll(heading, sub, desc, cta);
         getChildren().add(hero);
     }
 }

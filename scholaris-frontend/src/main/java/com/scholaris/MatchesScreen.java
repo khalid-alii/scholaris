@@ -25,7 +25,7 @@ public class MatchesScreen extends VBox {
         // ── Scrollable content area ───────────────────────────────────────────
         VBox content = new VBox(22);
         content.setPadding(new Insets(46, 60, 60, 60));
-        content.setMaxWidth(900);
+        content.setMaxWidth(650);
 
         Label title = new Label("Scholarships For You");
         title.getStyleClass().add("section-title");

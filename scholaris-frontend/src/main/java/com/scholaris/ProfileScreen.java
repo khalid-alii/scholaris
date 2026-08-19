@@ -2,7 +2,6 @@ package com.scholaris;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
@@ -99,42 +98,17 @@ public class ProfileScreen extends VBox {
 
         // ── Age & GPA (plain text fields, unchanged) ──────────────────────────
         TextField ageField = new TextField();
-        ageField.setPromptText("e.g. 21");
+        ageField.setPromptText("Enter your age");
 
         TextField gpaField = new TextField();
-        gpaField.setPromptText("e.g. 3.85");
+        gpaField.setPromptText("Enter your GPA");
 
-        // ── Nationality: searchable ComboBox ──────────────────────────────────
-        FilteredList<String> filteredCountries =
-                new FilteredList<>(ALL_COUNTRIES, p -> true);
-
-        ComboBox<String> nationalityBox = new ComboBox<>(filteredCountries);
-        nationalityBox.setEditable(true);
-        nationalityBox.setPromptText("e.g. Philippines");
+        // ── Nationality: fixed-list ComboBox ──────────────────────────────────
+        ComboBox<String> nationalityBox = new ComboBox<>(ALL_COUNTRIES);
+        nationalityBox.setEditable(false);
+        nationalityBox.setPromptText("Select your country");
         nationalityBox.setMaxWidth(Double.MAX_VALUE);
         nationalityBox.setVisibleRowCount(8);
-
-        // Filter the list as the user types; skip re-filtering when an item
-        // was just selected (the editor text would equal the selected item).
-        nationalityBox.getEditor().textProperty().addListener((obs, oldVal, newVal) -> {
-            String selectedItem = nationalityBox.getSelectionModel().getSelectedItem();
-
-            // User selected an item — the editor was set programmatically; reset filter.
-            if (selectedItem != null && selectedItem.equals(newVal)) {
-                filteredCountries.setPredicate(p -> true);
-                return;
-            }
-
-            // User is typing — apply filter.
-            String filter = (newVal == null) ? "" : newVal.toLowerCase().trim();
-            filteredCountries.setPredicate(country ->
-                filter.isEmpty() || country.toLowerCase().contains(filter));
-
-            // Keep the dropdown open while typing.
-            if (!nationalityBox.isShowing() && !filter.isEmpty()) {
-                nationalityBox.show();
-            }
-        });
 
         // ── Field of Study: simple fixed-list ComboBox ────────────────────────
         ComboBox<String> fieldBox = new ComboBox<>(FIELDS_OF_STUDY);
@@ -167,8 +141,11 @@ public class ProfileScreen extends VBox {
                 return;
             }
 
-            // Nationality: read directly from the editor (handles both typed & selected)
-            String nationality = nationalityBox.getEditor().getText().trim();
+            // Nationality: read selected value
+            String nationality = nationalityBox.getValue();
+            if (nationality == null) {
+                nationality = "";
+            }
 
             // Field of Study: must have a selection
             String field = fieldBox.getValue();

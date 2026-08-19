@@ -75,7 +75,7 @@
     -fx-font-weight: bold;
     -fx-font-size: 13px;
     -fx-padding: 14 30 14 30;
-    -fx-background-radius: 30;
+    -fx-background-radius: 12;
     -fx-cursor: hand;
 }
 .primary-button:hover {
@@ -85,11 +85,11 @@
 .secondary-button {
     -fx-background-color: transparent;
     -fx-border-color: #d7d2c2;
-    -fx-border-radius: 20;
+    -fx-border-radius: 12;
     -fx-text-fill: #141414;
     -fx-font-weight: bold;
     -fx-padding: 9 20 9 20;
-    -fx-background-radius: 20;
+    -fx-background-radius: 12;
     -fx-cursor: hand;
 }
 .secondary-button:hover {
@@ -135,11 +135,11 @@
 /* ---- Cards ---- */
 .form-card, .scholarship-card {
     -fx-background-color: #ffffff;
-    -fx-background-radius: 20;
-    -fx-border-color: #ece5d8;
-    -fx-border-radius: 20;
+    -fx-background-radius: 16;
+    -fx-border-color: #f0ebe1;
+    -fx-border-radius: 16;
     -fx-border-width: 1;
-    -fx-effect: dropshadow(gaussian, rgba(28,25,23,0.07), 16, 0, 0, 5);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 25, 0, 0, 8);
 }
 
 .card-title {
@@ -172,15 +172,19 @@
 }
 
 .text-field {
-    -fx-background-color: #f5f3ee;
+    -fx-background-color: #fbfbf9;
     -fx-border-color: #e7e0d2;
-    -fx-border-radius: 10;
-    -fx-background-radius: 10;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
     -fx-text-fill: #141414;
-    -fx-padding: 10;
+    -fx-padding: 12 14 12 14;
+}
+.text-field:hover {
+    -fx-background-color: #ffffff;
 }
 .text-field:focused {
     -fx-border-color: #d7f24a;
+    -fx-background-color: #ffffff;
 }
 
 .tag {

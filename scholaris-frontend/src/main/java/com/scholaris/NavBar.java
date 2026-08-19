@@ -44,11 +44,11 @@ public class NavBar extends HBox {
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
-        Hyperlink matches = new Hyperlink("My Matches");
+        Hyperlink matches = new Hyperlink("New Match");
         matches.getStyleClass().add("nav-link");
         matches.setOnAction(e -> Main.switchScreen(new ProfileScreen()));
 
-        Hyperlink how = new Hyperlink("How It Works");
+        Hyperlink how = new Hyperlink("");
         how.getStyleClass().add("nav-link");
 
         getChildren().addAll(logoBox, spacer, matches, how);
