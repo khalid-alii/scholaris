@@ -15,10 +15,15 @@ import java.util.List;
  * Detail screen for a single scholarship: title, website button, and overview.
  * Tags and the "Eligibility Criteria" section have been removed per PRD §8.
  * Previous/Next controls live in the header (NavBar) and wrap around.
+ *
+ * The StudentProfile is carried through so that "← Back to My Matches" can
+ * reconstruct the exact same MatchesScreen (same profile → same filtered &
+ * ranked list) without re-running the form.
  */
 public class ScholarshipDetailScreen extends VBox {
 
-    public ScholarshipDetailScreen(List<Scholarship> scholarships, int index) {
+    public ScholarshipDetailScreen(List<Scholarship> scholarships, int index,
+                                   StudentProfile profile) {
         Scholarship s = scholarships.get(index);
         int size      = scholarships.size();
         int prevIndex = (index - 1 + size) % size;
@@ -27,9 +32,10 @@ public class ScholarshipDetailScreen extends VBox {
         getStyleClass().add("screen");
         setAlignment(Pos.TOP_CENTER);
 
+        // Pass the profile along so Prev/Next also carry it forward
         NavBar nav = new NavBar(
-            () -> Main.switchScreen(new ScholarshipDetailScreen(scholarships, prevIndex)),
-            () -> Main.switchScreen(new ScholarshipDetailScreen(scholarships, nextIndex))
+            () -> Main.switchScreen(new ScholarshipDetailScreen(scholarships, prevIndex, profile)),
+            () -> Main.switchScreen(new ScholarshipDetailScreen(scholarships, nextIndex, profile))
         );
         VBox.setMargin(nav, new Insets(36, 0, 0, 0));
         getChildren().add(nav);
@@ -39,13 +45,11 @@ public class ScholarshipDetailScreen extends VBox {
         outer.setPadding(new Insets(40, 20, 60, 20));
         outer.setAlignment(Pos.TOP_LEFT);
 
-        // "← Back" returns to ProfileScreen so the user can re-run the match
-        // with different inputs (MatchesScreen requires a profile, so we can't
-        // reconstruct it here without holding a reference — ProfileScreen is the
-        // clean entry point).
+        // "← Back" reconstructs MatchesScreen with the same profile →
+        // the repository reruns the same query → the same list comes back.
         Hyperlink back = new Hyperlink("\u2190 Back to My Matches");
         back.getStyleClass().add("nav-link");
-        back.setOnAction(e -> Main.switchScreen(new ProfileScreen()));
+        back.setOnAction(e -> Main.switchScreen(new MatchesScreen(profile)));
 
         VBox card = new VBox(16);
         card.getStyleClass().add("form-card");

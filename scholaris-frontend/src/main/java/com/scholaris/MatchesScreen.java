@@ -13,6 +13,7 @@ import javafx.scene.layout.VBox;
 public class MatchesScreen extends VBox {
 
     public MatchesScreen(StudentProfile profile) {
+        // Keep a reference so buildCard can pass it to ScholarshipDetailScreen
         getStyleClass().add("screen");
         setAlignment(Pos.TOP_CENTER);
 
@@ -54,7 +55,7 @@ public class MatchesScreen extends VBox {
         } else {
             VBox cardList = new VBox(18);
             for (int i = 0; i < scholarships.size(); i++) {
-                cardList.getChildren().add(buildCard(scholarships.get(i), scholarships, i));
+                cardList.getChildren().add(buildCard(scholarships.get(i), scholarships, i, profile));
             }
             content.getChildren().add(cardList);
         }
@@ -76,7 +77,8 @@ public class MatchesScreen extends VBox {
         getChildren().add(scrollPane);
     }
 
-    private VBox buildCard(Scholarship s, List<Scholarship> all, int index) {
+    private VBox buildCard(Scholarship s, List<Scholarship> all, int index,
+                           StudentProfile profile) {
         VBox card = new VBox(10);
         card.getStyleClass().add("scholarship-card");
         card.setPadding(new Insets(24));
@@ -91,8 +93,9 @@ public class MatchesScreen extends VBox {
         desc.setWrapText(true);
 
         Button viewBtn = new Button("View Details  \u2192");
-        viewBtn.getStyleClass().add("secondary-button");
-        viewBtn.setOnAction(e -> Main.switchScreen(new ScholarshipDetailScreen(all, index)));
+        viewBtn.getStyleClass().add("primary-button");
+        viewBtn.setOnAction(e -> Main.switchScreen(
+                new ScholarshipDetailScreen(all, index, profile)));
 
         card.getChildren().addAll(titleLbl, desc, viewBtn);
         return card;
