@@ -1,0 +1,13 @@
+com\scholaris\FieldOfStudyMatcher.class
+com\scholaris\GeneralScholarship.class
+com\scholaris\ScholarshipRepository.class
+com\scholaris\ProfileScreen.class
+com\scholaris\NavBar.class
+com\scholaris\LandingScreen.class
+com\scholaris\ScholarshipDetailScreen.class
+com\scholaris\Main.class
+com\scholaris\StudentProfile.class
+com\scholaris\Scholarship.class
+com\scholaris\CsvParser.class
+com\scholaris\MatchingScholarshipRepository.class
+com\scholaris\MatchesScreen.class

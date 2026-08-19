@@ -6,6 +6,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
 /** "Scholarships For You" - list of matched scholarship cards. */
@@ -15,10 +16,12 @@ public class MatchesScreen extends VBox {
         getStyleClass().add("screen");
         setAlignment(Pos.TOP_CENTER);
 
+        // NavBar sits outside the scroll area so it stays fixed at the top
         NavBar nav = new NavBar();
-        VBox.setMargin(nav, new Insets(200, 0, 0, 0));
+        VBox.setMargin(nav, new Insets(36, 0, 0, 0));
         getChildren().add(nav);
 
+        // ── Scrollable content area ───────────────────────────────────────────
         VBox content = new VBox(22);
         content.setPadding(new Insets(46, 60, 60, 60));
         content.setMaxWidth(900);
@@ -26,7 +29,6 @@ public class MatchesScreen extends VBox {
         Label title = new Label("Scholarships For You");
         title.getStyleClass().add("section-title");
 
-        // Use the real matching repository instead of the static placeholder
         ScholarshipRepository repo = new MatchingScholarshipRepository(profile);
         List<Scholarship> scholarships = repo.getAllScholarships();
 
@@ -41,7 +43,6 @@ public class MatchesScreen extends VBox {
         content.getChildren().addAll(title, subtitle);
 
         if (scholarships.isEmpty()) {
-            // Empty state — real possibility with a strict 3-filter match
             Label emptyMsg = new Label(
                 "No matching scholarships found.\n" +
                 "Try adjusting your GPA, age, or field of study."
@@ -58,9 +59,21 @@ public class MatchesScreen extends VBox {
             content.getChildren().add(cardList);
         }
 
+        // Centre the content column the same way as before
         VBox wrapper = new VBox(content);
-        wrapper.setAlignment(Pos.CENTER);
-        getChildren().add(wrapper);
+        wrapper.setAlignment(Pos.TOP_CENTER);
+
+        // Wrap in a ScrollPane so long lists are reachable
+        ScrollPane scrollPane = new ScrollPane(wrapper);
+        scrollPane.setFitToWidth(true);   // content stretches to fill width
+        scrollPane.setFitToHeight(false); // height grows with content → scroll appears
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);   // no horizontal bar
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); // vertical only when needed
+        scrollPane.setStyle("-fx-background-color: transparent; -fx-background: transparent;");
+
+        // The ScrollPane fills all remaining vertical space below the NavBar
+        VBox.setVgrow(scrollPane, javafx.scene.layout.Priority.ALWAYS);
+        getChildren().add(scrollPane);
     }
 
     private VBox buildCard(Scholarship s, List<Scholarship> all, int index) {
