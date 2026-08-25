@@ -32,6 +32,7 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>com.scholaris.Main</mainClass>
+                    <launcher>scholaris</launcher>
                 </configuration>
             </plugin>
         </plugins>

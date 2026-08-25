@@ -1,66 +1,29 @@
-# Scholaris - Frontend (JavaFX)
+# Scholaris: Next-Gen Scholar Matching System
 
-GUI frontend for the Scholaris scholarship-matching app, built with JavaFX
-(styled via `app.css` to match the Figma design). This satisfies the
-project's "GUI-based (Swing / JavaFX / Any Java Framework)" requirement.
+## What is Scholaris?
+Scholaris is a Java-based desktop application designed to streamline the scholarship discovery process. Instead of manually searching through massive databases of financial aid, Scholaris acts as an intelligent matching engine that pairs you with opportunities tailored to your specific profile.
 
-## Requirements
-- JDK 17 or higher
-- Maven (3.6+)
+## Purpose
+The purpose of the app is to save students hours of time and frustration by automatically filtering out scholarships they don't qualify for. By analyzing a student's minimum GPA, age limit, and field of study, Scholaris guarantees that the opportunities shown are highly relevant to their academic journey.
 
-## How to run
-```bash
-mvn clean javafx:run
-```
-That's it - Maven will download JavaFX for you, no manual SDK setup needed.
+## How to Run the App
+You do **not** need to install Java, Maven, or any other programming tools to run this app. It has been bundled as a standalone Windows executable.
 
-### Running in IntelliJ IDEA instead
-1. Open the `scholaris-frontend` folder as a project (IntelliJ will detect the `pom.xml`).
-2. Wait for Maven to finish importing dependencies.
-3. Open `Main.java`, right-click it, and choose **Run 'Main.main()'**.
-   - If it complains about JavaFX modules, instead add a Maven run
-     configuration that runs the goal `javafx:run`.
+1. Open your File Explorer.
+2. Navigate to the following folder inside the project:
+   `scholaris-frontend\target\installer\Scholaris`
+3. Find the file named **`Scholaris.exe`**.
+4. Double-click **`Scholaris.exe`** to launch the application. 
 
-## Project structure
-```
-src/main/java/com/scholaris/
-  Main.java                     - app entry point, screen switching
-  NavBar.java                   - shared top navigation
-  LandingScreen.java            - hero / "Find My Scholarship"
-  ProfileScreen.java            - profile input form
-  MatchesScreen.java            - matched scholarship cards
-  ScholarshipDetailScreen.java  - single scholarship detail view
-  Scholarship.java              - data model
-  ScholarshipRepository.java    - interface the backend should implement
-  StaticScholarshipRepository.java - TEMP hardcoded data (delete once backend is ready)
-src/main/resources/app.css      - all styling
-```
+*(Note: If you want to share the app with friends, simply right-click the `Scholaris` folder inside `target\installer`, compress it to a ZIP file, and send it to them. They can extract it and run the `.exe` directly!)*
 
-## Handoff to backend teammate
-The UI never talks to hardcoded data directly - it goes through the
-`ScholarshipRepository` interface. To plug in the real matching logic:
-
-1. Create a new class, e.g. `MatchingScholarshipRepository implements ScholarshipRepository`.
-2. Implement `getAllScholarships()` using your file-handling / matching logic
-   (this is also where the collections + file I/O rubric requirement can live).
-3. In `MatchesScreen.java`, change:
-   ```java
-   ScholarshipRepository repo = new StaticScholarshipRepository();
-   ```
-   to:
-   ```java
-   ScholarshipRepository repo = new MatchingScholarshipRepository(studentProfile);
-   ```
-4. Wire `ProfileScreen`'s "Match Me" button to pass the entered Age/GPA/
-   Nationality/Field of Study into that repository instead of just
-   navigating to a static screen (there's a `// TODO(backend)` comment
-   marking exactly where).
-
-## Notes for the report / rubric
-- **Abstraction**: `ScholarshipRepository` interface
-- **Encapsulation**: `Scholarship` model (private fields, getters only)
-- **Inheritance/Polymorphism**: not fully used yet on the frontend side -
-  recommend the backend introduce an abstract `Scholarship` with subclasses
-  (e.g. `MeritScholarship`, `NeedBasedScholarship`) overriding a method like
-  `checkEligibility()`, since that's the natural place for it once real data
-  exists.
+## How to Use the App
+1. **Welcome Screen:** Once the app launches, click the **"Find My Scholarship →"** button on the landing page.
+2. **Create Your Profile:** Fill in your academic details:
+   * **Age:** Enter your current age (e.g., 21).
+   * **GPA:** Enter your GPA out of 4.0 (e.g., 3.85).
+   * **Nationality:** Select your country from the dropdown menu.
+   * **Field of Study:** Select your major/category from the dropdown list.
+3. **Match Me:** Click the **"Match Me →"** button. The intelligent engine will instantly filter the dataset.
+4. **View Matches:** You will see a scrollable grid of scholarship cards that you are perfectly eligible for.
+5. **Get Details:** Click **"View Details →"** on any scholarship card to read a comprehensive overview and find the button to visit the official scholarship website. You can also use the top navigation bar to page through your matches or return to your profile to adjust your details.
