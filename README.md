@@ -1,4 +1,4 @@
-# Scholaris: Next-Gen Scholar Matching System
+# Scholaris
 
 ## What is Scholaris?
 Scholaris is a Java-based desktop application designed to streamline the scholarship discovery process. Instead of manually searching through massive databases of financial aid, Scholaris acts as an intelligent matching engine that pairs you with opportunities tailored to your specific profile.
@@ -14,8 +14,6 @@ You do **not** need to install Java, Maven, or any other programming tools to ru
    `scholaris-frontend\target\installer\Scholaris`
 3. Find the file named **`Scholaris.exe`**.
 4. Double-click **`Scholaris.exe`** to launch the application. 
-
-*(Note: If you want to share the app with friends, simply right-click the `Scholaris` folder inside `target\installer`, compress it to a ZIP file, and send it to them. They can extract it and run the `.exe` directly!)*
 
 ## How to Use the App
 1. **Welcome Screen:** Once the app launches, click the **"Find My Scholarship →"** button on the landing page.
